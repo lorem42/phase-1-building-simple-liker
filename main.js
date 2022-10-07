@@ -4,7 +4,28 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const modal = document.querySelector('#modal')
+const modalMessage = document.querySelector('#modal_message')
 
+document.body.addEventListener('click', function(e){
+  if (e.target.innerText === EMPTY_HEART){
+    mimicServerCall()
+    .then(function(){
+      e.target.innerText === FULL_HEART
+      e.target.classList.toggle('activated-heart')
+    })
+    .catch(function(error){
+      const removeHidden = modal.classList.toggle('hidden');
+      modalMessage.innerText == error;
+      setTimeout(function() {removeHidden}, 3000)
+    })
+  }
+
+  if(e.target.innerText === FULL_HEART){
+    e.target.innerText === EMPTY_HEART
+    e.target.classList.toggle('activated-heart')
+  }
+})
 
 
 //------------------------------------------------------------------------------
